@@ -1,2 +1,39 @@
-font-family: 'Acme', sans-serif;
-font-family: 'Cinzel', serif;
+/* font-family: 'Acme', sans-serif;
+font-family: 'Cinzel', serif; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding-left: 2vw;
+  text-align: center;
+  background-color: #b22222;
+  gap: 10vw;
+}
+
+.poke-counter {
+  color: white;
+  font-family: "Cinzel", serif;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.poke-counter:hover {
+  text-decoration: underline;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  padding: 5vw;
+  border: solid grey 2px;
+  width: 100%;
+  background-color: #b22222;
+  color: white;
+  font-family: 'Cinzel', serif;
+}

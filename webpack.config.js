@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
-  "mode": "development",
+  mode: 'development',
   module: {
     rules: [
       {
@@ -27,8 +27,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Pokemon',
-      template: './src/index.html'
+      template: './src/index.html',
     }),
   ],
 };
-
