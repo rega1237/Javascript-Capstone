@@ -30,7 +30,7 @@ header {
 footer {
   position: fixed;
   bottom: 0;
-  padding: 5vw;
+  padding: 3vw;
   border: solid grey 2px;
   width: 100%;
   background-color: #b22222;
@@ -42,7 +42,8 @@ footer {
   padding: 2vw;
   display: grid;
   grid-template-columns: 30vw 30vw 30vw;
-  gap: 2vw;
+  gap: 4vw;
+  margin-bottom: 10vw;
 }
 
 .pokemon-card {
@@ -54,8 +55,8 @@ footer {
 }
 
 .pokemon-img {
-  max-width: 30vw;
-  max-height: 20vw;
+  width: 30vw;
+  height: 20vw;
   margin-bottom: 2vw;
 }
 
@@ -68,12 +69,13 @@ footer {
 
 .comment {
   border: groove black 2px;
+  border-radius: 5px;
   height: 6vw;
   width: 12vw;
   text-decoration: none;
   cursor: pointer;
   background-color: #b22222;
-  color: black;
+  color:whitesmoke;
   text-align: center;
   padding-top: 1vw;
   padding-bottom: 1vw;
@@ -84,7 +86,6 @@ footer {
 
 .comment:hover {
   background-color: #ae3333;
-  color: rgb(234, 221, 221);
-    border: solid gray 1px;
-
+  color: black;
+  border: solid gray 1px;
 }
