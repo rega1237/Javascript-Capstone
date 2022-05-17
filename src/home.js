@@ -31,4 +31,4 @@ const pokemonShow = async () => {
   }
 };
 
-export { getData, pokemnData, pokemonShow };
+export { pokemonShow };
