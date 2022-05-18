@@ -90,6 +90,12 @@ footer {
   border: solid gray 1px;
 }
 
+/* card pop CSS */
+
+.pokemon-pop {
+  display: none;
+}
+
 .fixed-item {
   position: fixed;
   background-color: rgba(240, 255, 255, 0.5);
@@ -107,25 +113,27 @@ footer {
   height: 90vh;
   background-color: gainsboro;
   border: solid 10px #ddd520;
+  margin: auto;
+  left: 0;
+  right: 0;
   top: 0;
   bottom: 0;
-  left: 0; 
-  right: 0; 
-  margin: auto;
 }
 
-.poke-img {
+.fa-solid {
+  position: absolute;
+  right: 0;
+  padding: 20px;
+}
+
+.poke-img-div {
   text-align: center;
   border-bottom: solid 2px rgba(240, 255, 255, 0.5);
+  padding: 5px;
 }
 
-.poke-img img {
+.poke-img-div img {
   width: 30%;
-}
-
-.poke-description {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 .poke-data {
@@ -134,19 +142,22 @@ footer {
 
 .poke-data h2 {
   text-align: center;
-  font-family: 'Acme', sans-serif
+  font-family: 'Acme', sans-serif;
 }
 
-.poke-description {
-  margin-top: 1vw;
+.poke-description-card {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 0.5rem;
   text-align: center;
 }
 
 .description-title {
   font-family: 'Acme', sans-serif;
+  list-style: none;
 }
 
-.poke-description ul > li {
-  list-style: none;
+.li {
   font-family: 'Cinzel', serif;
+  list-style: none;
 }
