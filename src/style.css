@@ -133,7 +133,7 @@ footer {
 }
 
 .poke-img-div img {
-  width: 30%;
+  width: 15vw;
 }
 
 .poke-data {
@@ -143,21 +143,28 @@ footer {
 .poke-data h2 {
   text-align: center;
   font-family: 'Acme', sans-serif;
+  font-size: 1.5rem;
 }
 
 .poke-description-card {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  margin: 0.5rem 0;
+}
+
+ul {
   text-align: center;
 }
 
 .description-title {
   font-family: 'Acme', sans-serif;
   list-style: none;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .li {
   font-family: 'Cinzel', serif;
   list-style: none;
+  font-size: 0.8rem;
 }

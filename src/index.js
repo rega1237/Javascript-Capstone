@@ -14,18 +14,5 @@ const displayPop = async () => {
   });
 };
 
-const deletePop = () => {
-  const closeBtn = document.querySelector('.fa-solid');
-  const popWindow = document.querySelector('.pokemon-pop');
-  const blurWindow = document.querySelector('.fixed-item');
-  closeBtn.addEventListener('click', () => {
-    popWindow.style.display = 'none';
-  });
-  blurWindow.addEventListener('click', () => {
-    popWindow.style.display = 'none';
-  });
-};
-
 pokemonShow();
 displayPop();
-deletePop();

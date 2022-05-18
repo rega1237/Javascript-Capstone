@@ -27,25 +27,46 @@ const displayPokemon = async (e) => {
   const attack = data.stats[1].base_stat;
   const defense = data.stats[2].base_stat;
   const speed = data.stats[5].base_stat;
-  const pokeImg = document.querySelector('.poke-img');
-  const pokeName = document.querySelector('.poke-name');
-  const pokeType = document.querySelector('.poke-type');
-  const abilityOne = document.querySelector('.ability-one');
-  const abilityTwo = document.querySelector('.ability-two');
-  const hpLi = document.querySelector('.hp');
-  const attackLi = document.querySelector('.attack');
-  const defenseLi = document.querySelector('.defense');
-  const speedLi = document.querySelector('.speed');
-  pokeImg.setAttribute('src', `${img}`);
-  pokeImg.setAttribute('alt', `${nameUp} picture`);
-  pokeName.textContent = `${nameUp}`;
-  pokeType.textContent = `${typeUp}`;
-  abilityOne.textContent = `${abilitieOneUp}`;
-  abilityTwo.textContent = `${abilitieTwoUp}`;
-  hpLi.innerHTML = `<strong>HP</strong>: ${hp}`;
-  attackLi.innerHTML = `<strong>Attack</strong>: ${attack}`;
-  defenseLi.innerHTML = `<strong>Defense</strong>: ${defense}`;
-  speedLi.innerHTML = `<strong>Speed</strong>: ${speed}`;
+  const sectionCard = document.querySelector('.pokemon-pop');
+  sectionCard.innerHTML = null;
+  sectionCard.insertAdjacentHTML('afterbegin', `
+  <div class="fixed-item">
+        <div class="body-card">
+          <i class="fa-solid fa-xmark"></i>
+          <div class="poke-img-div">
+            <img src="${img}" alt="" class="poke-img">
+          </div>
+          <div class="poke-data">
+            <h2 class="poke-name">${nameUp}</h2>
+            <div class="poke-description-card">
+              <ul>
+                <li class="description-title">Type:</li>
+                <li class="poke-type li">${typeUp}</li>
+              </ul>
+              <ul>
+                <li class="description-title">Abilities</li>
+                <li class="ability-one li">${abilitieOneUp}</li>
+                <li class="ability-two li">${abilitieTwoUp}</li>
+              </ul>
+              <ul>
+                <li class="description-title">Basic Stats</li>
+                <li class="hp li"><strong>HP:</strong> ${hp}</li>
+                <li class="attack li"><strong>Attack:</strong> ${attack}</li>
+                <li class="defense li"><strong>Defense</strong>: ${defense}</li>
+                <li class="speed li"><strong>Speed</strong>: ${speed} </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>`);
+  const closeBtn = document.querySelector('.fa-solid');
+  const blurWindow = document.querySelector('.fixed-item');
+  closeBtn.addEventListener('click', () => {
+    sectionCard.style.display = 'none';
+  });
+  blurWindow.addEventListener('click', () => {
+    sectionCard.style.display = 'none';
+  });
 };
 
 export default displayPokemon;
