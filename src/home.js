@@ -28,7 +28,7 @@ const likesShow = async () => {
   const pokemons = await pokemnData();
   for (let i = 0; i < likes.length; i += 1) {
     for (let x = 0; x < pokemons.length; x += 1) {
-      if (likes[i].item_id == pokemons[x].id) {
+      if (Number(likes[i].item_id) === pokemons[x].id) {
         pokemons[x].likes = likes[i].likes;
       }
     }
