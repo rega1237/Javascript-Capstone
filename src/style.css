@@ -30,12 +30,64 @@ header {
 footer {
   position: fixed;
   bottom: 0;
-  padding: 5vw;
+  padding: 2.5vw;
   border: solid grey 2px;
   width: 100%;
   background-color: #b22222;
   color: white;
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
+}
+
+.items-container {
+  padding: 2vw;
+  display: grid;
+  grid-template-columns: 30vw 30vw 30vw;
+  gap: 4vw;
+  margin-bottom: 10vw;
+}
+
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 30vw;
+}
+
+.pokemon-img {
+  width: 30vw;
+  height: 20vw;
+  margin-bottom: 2vw;
+}
+
+.pokemon-name {
+  font-size: 5vw;
+  margin-bottom: 2vw;
+  font-family: "Acme", sans-serif;
+  color: #b22222;
+}
+
+.comment {
+  border: groove black 2px;
+  border-radius: 5px;
+  height: 6vw;
+  width: 12vw;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #b22222;
+  color: whitesmoke;
+  text-align: center;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  font-size: 2vw;
+  font-weight: 500;
+  font-family: "Cinzel", serif;
+}
+
+.comment:hover {
+  background-color: #ae3333;
+  color: black;
+  border: solid gray 1px;
 }
 
 .fixed-item {
