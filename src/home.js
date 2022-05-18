@@ -28,7 +28,7 @@ const pokemonShow = async () => {
   for (let i = 0; i < pokemons.length; i += 1) {
     container.innerHTML += `<article class="pokemon-card">
         <img src="${pokemons[i].img}" alt="${pokemons[i].name}" class="pokemon-img"/>
-        <h2 class="pokemon-name">${pokemons[i].name}</h2>
+        <h2 class="pokemon-name">${pokemons[i].name.toUpperCase()}</h2>
         <a href="#" class="comment" id="${pokemons[i].id}">Comment</a></article>`;
   }
 };
