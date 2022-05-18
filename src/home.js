@@ -1,9 +1,8 @@
 /* eslint-disable no-await-in-loop */
 
-const container = document.querySelector(".items-container");
-const pokemonList = "https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0";
-const likeApi =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/likes";
+const container = document.querySelector('.items-container');
+const pokemonList = 'https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0';
+const likeApi = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/likes';
 let pokemons = [];
 
 const getData = async (Api) => {
@@ -35,21 +34,17 @@ const likesShow = async () => {
     }
   }
   return pokemons;
-}
+};
 
 const pokemonShow = async () => {
   const pokemons = await likesShow();
-  container.innerHTML = "";
+  container.innerHTML = '';
   for (let i = 0; i < pokemons.length; i += 1) {
     container.innerHTML += `<article class="pokemon-card">
-        <img src="${pokemons[i].img}" alt="${
-      pokemons[i].name
-    }" class="pokemon-img"/>
+        <img src="${pokemons[i].img}" alt="${pokemons[i].name}" class="pokemon-img"/>
         <h2 class="pokemon-name">${pokemons[i].name.toUpperCase()}</h2>
         <p class="likes-counter">${pokemons[i].likes} likes</p>
-        <a href="#" class="comment" id="${
-          pokemons[i].id
-        }">Comment</a></article>`;
+        <a href="#" class="comment" id="${pokemons[i].id}">Comment</a></article>`;
   }
 };
 
