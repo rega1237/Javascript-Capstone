@@ -148,7 +148,7 @@ footer {
 
 .poke-data h2 {
   text-align: center;
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
   font-size: 1.5rem;
 }
 
@@ -163,21 +163,22 @@ ul {
 }
 
 .description-title {
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
   list-style: none;
   font-size: 1.2rem;
   text-align: center;
 }
 
 .li {
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
   list-style: none;
   font-size: 0.8rem;
 }
 
-.like-button, .like-icon {
-  height:3vw;
-  width:3vw;
+.like-button,
+.like-icon {
+  height: 3vw;
+  width: 3vw;
   border: none;
   background-color: inherit;
   cursor: pointer;

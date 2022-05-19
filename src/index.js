@@ -1,5 +1,5 @@
 import displayPokemon from './pokePop.js';
-import  pokemonShow from './home.js';
+import pokemonShow from './home.js';
 import './style.css';
 
 const displayPop = async () => {
