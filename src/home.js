@@ -145,4 +145,3 @@ const itemCounter = async () => {
 
 itemCounter();
 export default pokemonShow;
-// dXDIQAnIOHUjELoXSV9S;
