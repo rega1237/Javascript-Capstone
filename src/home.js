@@ -1,9 +1,8 @@
 /* eslint-disable no-await-in-loop */
 
-const container = document.querySelector(".items-container");
-const pokemonList = "https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0";
-const likeApi =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/likes";
+const container = document.querySelector('.items-container');
+const pokemonList = 'https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0';
+const likeApi = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/likes';
 let pokemons = [];
 
 const getData = async (Api) => {
@@ -39,9 +38,9 @@ const likesShow = async () => {
 
 const addlike = async (button) => {
   await fetch(likeApi, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ item_id: button.id }),
   });
@@ -55,17 +54,17 @@ const addlike = async (button) => {
 </g>
 </g>
 </svg>`;
-  button.setAttribute("disabled", "");
+  button.setAttribute('disabled', '');
   const counterLikes = document.getElementById(`${button.id}counter`);
-  const likes = counterLikes.innerHTML.split(" ");
+  const likes = counterLikes.innerHTML.split(' ');
   likes[0] = Number(likes[0]) + 1;
-  counterLikes.innerHTML = likes.join(" ");
+  counterLikes.innerHTML = likes.join(' ');
 };
 
 const likeIcon = () => {
-  const likeButton = document.querySelectorAll("button");
+  const likeButton = document.querySelectorAll('button');
   likeButton.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener('click', () => {
       addlike(button);
     });
   });
@@ -73,12 +72,12 @@ const likeIcon = () => {
 
 const pokemonShow = async () => {
   const pokemons = await likesShow();
-  container.innerHTML = "";
+  container.innerHTML = '';
   for (let i = 0; i < pokemons.length; i += 1) {
     container.innerHTML += `<article class="pokemon-card">
         <img src="${pokemons[i].img}" alt="${
-      pokemons[i].name
-    }" class="pokemon-img"/>
+  pokemons[i].name
+}" class="pokemon-img"/>
         <h2 class="pokemon-name">${pokemons[i].name.toUpperCase()}</h2>
         <button class="like-button" id="${pokemons[i].id}">
       <svg
@@ -129,18 +128,18 @@ const pokemonShow = async () => {
       </svg>
     </button>
         <p class="likes-counter" id="${pokemons[i].id}counter">${
-      pokemons[i].likes || 0
-    } likes</p>
+  pokemons[i].likes || 0
+} likes</p>
         <a href="#" class="comment" id="${
-          pokemons[i].id
-        }">Comment</a></article>`;
+  pokemons[i].id
+}">Comment</a></article>`;
   }
   likeIcon();
 };
 
 const itemCounter = async () => {
   const pokemons = await pokemnData();
-  const pokemonCounter = document.querySelector(".poke-counter");
+  const pokemonCounter = document.querySelector('.poke-counter');
   pokemonCounter.innerHTML = `${pokemons.length} Pokemons`;
 };
 
