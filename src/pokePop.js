@@ -11,6 +11,12 @@ const getDataLink = async (id) => {
   return pokeDataLink.json();
 };
 
+const getComments = async (e) => {
+  const commentUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments?item_id=item${e.target.id}`;
+  const data = await fetch(commentUrl);
+  return data.json();
+};
+
 const displayPokemon = async (e) => {
   const data = await getDataLink(e.target.id);
   const { name } = data;
@@ -57,6 +63,9 @@ const displayPokemon = async (e) => {
               </ul>
             </div>
           </div>
+          <div class="display-comment">
+          <h3>Comments</h3>
+          <div class="all-comments"></div>
         </div>
       </div>`);
   const closeBtn = document.querySelector('.fa-solid');
@@ -66,6 +75,15 @@ const displayPokemon = async (e) => {
   });
   blurWindow.addEventListener('click', () => {
     sectionCard.style.display = 'none';
+  });
+  const comments = await getComments(e);
+  const commentsDiv = document.querySelector('.all-comments');
+  comments.forEach((comment) => {
+    const { username } = comment;
+    const creationDate = comment.creation_date;
+    const commentLine = comment.comment;
+    commentsDiv.insertAdjacentHTML('beforeend', `
+    <p class="comment-line"><strong>${creationDate}</strong> ${username}: ${commentLine}<p>`);
   });
 };
 
