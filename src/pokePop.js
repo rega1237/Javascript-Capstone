@@ -79,7 +79,7 @@ const displayPokemon = async (e) => {
   const attack = data.stats[1].base_stat;
   const defense = data.stats[2].base_stat;
   const speed = data.stats[5].base_stat;
-  const commentCounter = comments.length
+  const commentCounter = comments.length;
   const sectionCard = document.querySelector('.pokemon-pop');
   sectionCard.innerHTML = null;
   sectionCard.insertAdjacentHTML('afterbegin', `
