@@ -58,7 +58,7 @@ const addlike = async (button) => {
   const counterLikes = document.getElementById(`${button.id}counter`);
   const likes = counterLikes.innerHTML.split(' ');
   likes[0] = Number(likes[0]) + 1;
-  counterLikes.innerHTML = likes.join('');
+  counterLikes.innerHTML = likes.join(' ');
 };
 
 const likeIcon = () => {
@@ -128,7 +128,7 @@ const pokemonShow = async () => {
       </svg>
     </button>
         <p class="likes-counter" id="${pokemons[i].id}counter">${
-  pokemons[i].likes
+  pokemons[i].likes || 0
 } likes</p>
         <a href="#" class="comment" id="${
   pokemons[i].id
@@ -137,5 +137,12 @@ const pokemonShow = async () => {
   likeIcon();
 };
 
+const itemCounter = async () => {
+  const pokemons = await pokemnData();
+  const pokemonCounter = document.querySelector('.poke-counter');
+  pokemonCounter.innerHTML = `${pokemons.length} Pokemons`;
+};
+
+itemCounter();
 export default pokemonShow;
 // dXDIQAnIOHUjELoXSV9S;
