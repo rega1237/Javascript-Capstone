@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 const getArray = async () => {
   const url = 'https://pokeapi.co/api/v2/pokemon?limit=9';
   const data = await fetch(url);
@@ -11,7 +13,7 @@ const getDataLink = async (id) => {
   return pokeDataLink.json();
 };
 
-const getComments = async (e) => {
+export const getComments = async (e) => {
   const commentUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments?item_id=item${e.target.id}`;
   const data = await fetch(commentUrl);
   return data.json();
@@ -38,31 +40,13 @@ const showComments = async (e) => {
   });
 };
 
-const postComment = async () => {
-  const commentBtn = document.querySelector('.comment-btn');
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments';
-  commentBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    const userName = document.querySelector('.username');
-    const textArea = document.getElementById('textarea');
-    const id = `item${e.target.id}`;
-    await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        item_id: id,
-        username: userName.value,
-        comment: textArea.value,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    showComments(e);
-    e.target.parentElement.reset();
-  });
+export const counterComment = async (e) => {
+  const comments = await getComments(e);
+  const numberComments = comments.length;
+  return numberComments;
 };
 
-const displayPokemon = async (e) => {
+export const displayPokemon = async (e) => {
   const data = await getDataLink(e.target.id);
   const { name } = data;
   const nameUp = name.charAt(0).toUpperCase() + name.slice(1);
@@ -78,6 +62,7 @@ const displayPokemon = async (e) => {
   const attack = data.stats[1].base_stat;
   const defense = data.stats[2].base_stat;
   const speed = data.stats[5].base_stat;
+  const commentsCounter = await counterComment(e);
   const sectionCard = document.querySelector('.pokemon-pop');
   sectionCard.innerHTML = null;
   sectionCard.insertAdjacentHTML('afterbegin', `
@@ -109,7 +94,7 @@ const displayPokemon = async (e) => {
             </div>
           </div>
           <div class="display-comment">
-          <h3>Comments</h3>
+          <h3 class="comment-counter"> Counter (${commentsCounter})</h3>
           <div class="all-comments"></div>
         </div>
         <h3 class="comment-title">Add a comment</h3>
@@ -133,10 +118,32 @@ const displayPokemon = async (e) => {
     bodyCard.classList.remove('water');
     bodyCard.classList.remove('grass');
   }
-
   closePop();
   showComments(e);
   postComment(e);
 };
 
-export default displayPokemon;
+const postComment = async () => {
+  const commentBtn = document.querySelector('.comment-btn');
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments';
+  commentBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const userName = document.querySelector('.username');
+    const textArea = document.getElementById('textarea');
+    const id = `item${e.target.id}`;
+    await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: id,
+        username: userName.value,
+        comment: textArea.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    showComments(e);
+    e.target.parentElement.reset();
+    displayPokemon(e);
+  });
+};
