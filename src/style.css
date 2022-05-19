@@ -174,3 +174,11 @@ ul {
   list-style: none;
   font-size: 0.8rem;
 }
+
+.like-button, .like-icon {
+  height:3vw;
+  width:3vw;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
