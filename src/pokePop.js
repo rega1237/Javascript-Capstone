@@ -23,7 +23,7 @@ const closePop = () => {
   closeBtn.addEventListener('click', () => {
     sectionCard.style.display = 'none';
   });
-}
+};
 
 const showComments = async (e) => {
   const comments = await getComments(e);
@@ -36,12 +36,11 @@ const showComments = async (e) => {
     commentsDiv.insertAdjacentHTML('beforeend', `
     <p class="comment-line"><strong>${creationDate}</strong> ${username}: ${commentLine}<p>`);
   });
-}
+};
 
-const postComment = async (e) => {
-  const form = document.getElementById('comment-form')
+const postComment = async () => {
   const commentBtn = document.querySelector('.comment-btn');
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments'
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments';
   commentBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     const userName = document.querySelector('.username');
@@ -50,18 +49,18 @@ const postComment = async (e) => {
     await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-          "item_id": id,
-          "username": userName.value,
-          "comment": textArea.value
+        item_id: id,
+        username: userName.value,
+        comment: textArea.value,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    })
+    });
     showComments(e);
     e.target.parentElement.reset();
-  })
-} 
+  });
+};
 
 const displayPokemon = async (e) => {
   const data = await getDataLink(e.target.id);
@@ -124,17 +123,17 @@ const displayPokemon = async (e) => {
   if (type === 'grass') {
     bodyCard.classList.add('grass');
     bodyCard.classList.remove('water');
-    bodyCard.classList.remove('fire')
+    bodyCard.classList.remove('fire');
   } else if (type === 'water') {
     bodyCard.classList.add('water');
     bodyCard.classList.remove('grass');
     bodyCard.classList.remove('fire');
-  }else {
-    bodyCard.classList.add('fire')
+  } else {
+    bodyCard.classList.add('fire');
     bodyCard.classList.remove('water');
     bodyCard.classList.remove('grass');
   }
-    
+
   closePop();
   showComments(e);
   postComment(e);
