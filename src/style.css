@@ -148,8 +148,8 @@ footer {
 
 .poke-data h2 {
   text-align: center;
-  font-family: "Acme", sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Acme', sans-serif;
+  font-size: 1.8rem;
 }
 
 .poke-description-card {
@@ -165,14 +165,52 @@ ul {
 .description-title {
   font-family: "Acme", sans-serif;
   list-style: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
 }
 
 .li {
   font-family: "Cinzel", serif;
   list-style: none;
+  font-size: 0.9rem;
+}
+
+.display-comment h3 {
+  font-family: 'Acme', sans-serif;
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.all-comments {
+  height: 70px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.comment-line {
+  font-family: 'Cinzel', serif;
   font-size: 0.8rem;
+  width: 85%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .poke-data h2 {
+    font-size: 1.2rem;
+  }
+
+  .li {
+    font-size: 0.8rem;
+  }
+
+  .display-comment h3 {
+    font-size: 1rem;
+  }
+
+  .comment-line {
+    font-size: 0.7rem;
+  }
 }
 
 .like-button,
