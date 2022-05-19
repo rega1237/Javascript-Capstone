@@ -58,6 +58,7 @@ const postComment = async () => {
       },
     });
     showComments(e);
+    displayPokemon(e);
     e.target.parentElement.reset();
   });
 };
