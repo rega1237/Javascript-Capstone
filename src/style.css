@@ -163,14 +163,14 @@ ul {
 }
 
 .description-title {
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
   list-style: none;
   font-size: 1rem;
   text-align: center;
 }
 
 .li {
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
   list-style: none;
   font-size: 0.9rem;
 }
@@ -211,4 +211,13 @@ ul {
   .comment-line {
     font-size: 0.7rem;
   }
+}
+
+.like-button,
+.like-icon {
+  height: 3vw;
+  width: 3vw;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
 }
