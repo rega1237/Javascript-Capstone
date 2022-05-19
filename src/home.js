@@ -56,7 +56,7 @@ const addlike = async (button) => {
 </svg>`;
   button.setAttribute('disabled', '');
   const counterLikes = document.getElementById(`${button.id}counter`);
-  const likes = counterLikes.innerHTML.split('');
+  const likes = counterLikes.innerHTML.split(' ');
   likes[0] = Number(likes[0]) + 1;
   counterLikes.innerHTML = likes.join('');
 };
