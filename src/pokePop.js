@@ -40,9 +40,14 @@ const showComments = async (e) => {
   });
 };
 
-const displayPokemon = async (e) => {
-  const data = await getDataLink(e.target.id);
+export const counterComment = async (e) => {
   const comments = await getComments(e);
+  const numberComments = comments.length;
+  return numberComments;
+} 
+
+export const displayPokemon = async (e) => {
+  const data = await getDataLink(e.target.id);
   const { name } = data;
   const nameUp = name.charAt(0).toUpperCase() + name.slice(1);
   const img = data.sprites.other.dream_world.front_default;
@@ -57,7 +62,7 @@ const displayPokemon = async (e) => {
   const attack = data.stats[1].base_stat;
   const defense = data.stats[2].base_stat;
   const speed = data.stats[5].base_stat;
-  const commentCounter = comments.length;
+  const commentsCounter = await counterComment(e);
   const sectionCard = document.querySelector('.pokemon-pop');
   sectionCard.innerHTML = null;
   sectionCard.insertAdjacentHTML('afterbegin', `
@@ -89,7 +94,7 @@ const displayPokemon = async (e) => {
             </div>
           </div>
           <div class="display-comment">
-          <h3> Counter (${commentCounter})</h3>
+          <h3 class="comment-counter"> Counter (${commentsCounter})</h3>
           <div class="all-comments"></div>
         </div>
         <h3 class="comment-title">Add a comment</h3>
@@ -113,7 +118,6 @@ const displayPokemon = async (e) => {
     bodyCard.classList.remove('water');
     bodyCard.classList.remove('grass');
   }
-
   closePop();
   showComments(e);
   postComment(e);
@@ -143,5 +147,3 @@ const postComment = async () => {
     displayPokemon(e);
   });
 };
-
-export default displayPokemon;
