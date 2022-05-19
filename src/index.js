@@ -6,7 +6,7 @@ const displayPop = async () => {
   await pokemonShow();
   const commentBtn = document.querySelectorAll('.comment');
   commentBtn.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       const pokePop = document.querySelector('.pokemon-pop');
       pokePop.style.display = 'block';
       displayPokemon(e);
