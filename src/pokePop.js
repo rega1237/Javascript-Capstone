@@ -17,6 +17,52 @@ const getComments = async (e) => {
   return data.json();
 };
 
+const closePop = () => {
+  const sectionCard = document.querySelector('.pokemon-pop');
+  const closeBtn = document.querySelector('.fa-solid');
+  closeBtn.addEventListener('click', () => {
+    sectionCard.style.display = 'none';
+  });
+}
+
+const showComments = async (e) => {
+  const comments = await getComments(e);
+  const commentsDiv = document.querySelector('.all-comments');
+  commentsDiv.innerHTML = null;
+  comments.forEach((comment) => {
+    const { username } = comment;
+    const creationDate = comment.creation_date;
+    const commentLine = comment.comment;
+    commentsDiv.insertAdjacentHTML('beforeend', `
+    <p class="comment-line"><strong>${creationDate}</strong> ${username}: ${commentLine}<p>`);
+  });
+}
+
+const postComment = async (e) => {
+  const form = document.getElementById('comment-form')
+  const commentBtn = document.querySelector('.comment-btn');
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments'
+  commentBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const userName = document.querySelector('.username');
+    const textArea = document.getElementById('textarea');
+    const id = `item${e.target.id}`;
+    await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+          "item_id": id,
+          "username": userName.value,
+          "comment": textArea.value
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    showComments(e);
+    e.target.parentElement.reset();
+  })
+} 
+
 const displayPokemon = async (e) => {
   const data = await getDataLink(e.target.id);
   const { name } = data;
@@ -67,24 +113,31 @@ const displayPokemon = async (e) => {
           <h3>Comments</h3>
           <div class="all-comments"></div>
         </div>
+        <h3 class="comment-title">Add a comment</h3>
+        <form id="comment-form">
+          <input class="username" type="text" placeholder="insert your username" required="">
+          <textarea id="textarea" cols="20" rows="5" placeholder="Enter your comment" required=""></textarea>
+          <button type="submit" class="comment-btn" id="${e.target.id}">Comment</button>
+        </form>
       </div>`);
-  const closeBtn = document.querySelector('.fa-solid');
-  const blurWindow = document.querySelector('.fixed-item');
-  closeBtn.addEventListener('click', () => {
-    sectionCard.style.display = 'none';
-  });
-  blurWindow.addEventListener('click', () => {
-    sectionCard.style.display = 'none';
-  });
-  const comments = await getComments(e);
-  const commentsDiv = document.querySelector('.all-comments');
-  comments.forEach((comment) => {
-    const { username } = comment;
-    const creationDate = comment.creation_date;
-    const commentLine = comment.comment;
-    commentsDiv.insertAdjacentHTML('beforeend', `
-    <p class="comment-line"><strong>${creationDate}</strong> ${username}: ${commentLine}<p>`);
-  });
+  const bodyCard = document.querySelector('.body-card');
+  if (type === 'grass') {
+    bodyCard.classList.add('grass');
+    bodyCard.classList.remove('water');
+    bodyCard.classList.remove('fire')
+  } else if (type === 'water') {
+    bodyCard.classList.add('water');
+    bodyCard.classList.remove('grass');
+    bodyCard.classList.remove('fire');
+  }else {
+    bodyCard.classList.add('fire')
+    bodyCard.classList.remove('water');
+    bodyCard.classList.remove('grass');
+  }
+    
+  closePop();
+  showComments(e);
+  postComment(e);
 };
 
 export default displayPokemon;
