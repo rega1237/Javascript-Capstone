@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 const getArray = async () => {
   const url = 'https://pokeapi.co/api/v2/pokemon?limit=9';
   const data = await fetch(url);
@@ -35,31 +37,6 @@ const showComments = async (e) => {
     const commentLine = comment.comment;
     commentsDiv.insertAdjacentHTML('beforeend', `
     <p class="comment-line"><strong>${creationDate}</strong> ${username}: ${commentLine}<p>`);
-  });
-};
-
-const postComment = async () => {
-  const commentBtn = document.querySelector('.comment-btn');
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments';
-  commentBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    const userName = document.querySelector('.username');
-    const textArea = document.getElementById('textarea');
-    const id = `item${e.target.id}`;
-    await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        item_id: id,
-        username: userName.value,
-        comment: textArea.value,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    showComments(e);
-    displayPokemon(e);
-    e.target.parentElement.reset();
   });
 };
 
@@ -112,7 +89,7 @@ const displayPokemon = async (e) => {
             </div>
           </div>
           <div class="display-comment">
-          <h3>Comments (${commentCounter})</h3>
+          <h3> Counter (${commentCounter})</h3>
           <div class="all-comments"></div>
         </div>
         <h3 class="comment-title">Add a comment</h3>
@@ -140,6 +117,31 @@ const displayPokemon = async (e) => {
   closePop();
   showComments(e);
   postComment(e);
+};
+
+const postComment = async () => {
+  const commentBtn = document.querySelector('.comment-btn');
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments';
+  commentBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const userName = document.querySelector('.username');
+    const textArea = document.getElementById('textarea');
+    const id = `item${e.target.id}`;
+    await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: id,
+        username: userName.value,
+        comment: textArea.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    showComments(e);
+    e.target.parentElement.reset();
+    displayPokemon(e);
+  });
 };
 
 export default displayPokemon;
