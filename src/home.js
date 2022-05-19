@@ -1,9 +1,8 @@
 /* eslint-disable no-await-in-loop */
 
-const container = document.querySelector(".items-container");
-const pokemonList = "https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0";
-const likeApi =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/likes";
+const container = document.querySelector('.items-container');
+const pokemonList = 'https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0';
+const likeApi = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/likes';
 let pokemons = [];
 
 const getData = async (Api) => {
@@ -37,14 +36,48 @@ const likesShow = async () => {
   return pokemons;
 };
 
+const addlike = async (button) => {
+  await fetch(likeApi, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ item_id: button.id }),
+  });
+  button.innerHTML = `<svg class="like-icon red" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+<desc>Created with Fabric.js 1.7.22</desc>
+<defs>
+</defs>
+<g transform="translate(128 128) scale(0.72 0.72)" style="">
+<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)" >
+<path d="M 45 10.715 c 4.77 -4.857 11.36 -7.861 18.64 -7.861 C 78.198 2.854 90 14.87 90 29.694 c 0 35.292 -36.812 34.15 -45 57.453 C 36.812 63.843 0 64.986 0 29.694 C 0 14.87 11.802 2.854 26.36 2.854 C 33.64 2.854 40.23 5.858 45 10.715 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(211,28,28); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+</g>
+</g>
+</svg>`;
+  button.setAttribute('disabled', '');
+  const counterLikes = document.getElementById(`${button.id}counter`);
+  const likes = counterLikes.innerHTML.split('');
+  likes[0] = Number(likes[0]) + 1;
+  counterLikes.innerHTML = likes.join('');
+};
+
+const likeIcon = () => {
+  const likeButton = document.querySelectorAll('button');
+  likeButton.forEach((button) => {
+    button.addEventListener('click', () => {
+      addlike(button);
+    });
+  });
+};
+
 const pokemonShow = async () => {
   const pokemons = await likesShow();
-  container.innerHTML = "";
+  container.innerHTML = '';
   for (let i = 0; i < pokemons.length; i += 1) {
     container.innerHTML += `<article class="pokemon-card">
         <img src="${pokemons[i].img}" alt="${
-      pokemons[i].name
-    }" class="pokemon-img"/>
+  pokemons[i].name
+}" class="pokemon-img"/>
         <h2 class="pokemon-name">${pokemons[i].name.toUpperCase()}</h2>
         <button class="like-button" id="${pokemons[i].id}">
       <svg
@@ -95,54 +128,20 @@ const pokemonShow = async () => {
       </svg>
     </button>
         <p class="likes-counter" id="${pokemons[i].id}counter">${
-      pokemons[i].likes
-    } likes</p>
+  pokemons[i].likes
+} likes</p>
         <a href="#" class="comment" id="${
-          pokemons[i].id
-        }">Comment</a></article>`;
+  pokemons[i].id
+}">Comment</a></article>`;
   }
   likeIcon();
 };
 
-const likeIcon = () => {
-  const likeButton = document.querySelectorAll("button");
-  likeButton.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      addlike(button);
-     
-
-    })})}
-
-const addlike = async (button) => {
-  await fetch(likeApi, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ item_id: button.id}),
-  });
- button.innerHTML = `<svg class="like-icon red" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
-<desc>Created with Fabric.js 1.7.22</desc>
-<defs>
-</defs>
-<g transform="translate(128 128) scale(0.72 0.72)" style="">
-	<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)" >
-	<path d="M 45 10.715 c 4.77 -4.857 11.36 -7.861 18.64 -7.861 C 78.198 2.854 90 14.87 90 29.694 c 0 35.292 -36.812 34.15 -45 57.453 C 36.812 63.843 0 64.986 0 29.694 C 0 14.87 11.802 2.854 26.36 2.854 C 33.64 2.854 40.23 5.858 45 10.715 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(211,28,28); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-</g>
-</g>
-</svg>`;
- button.setAttribute("disabled", "");
-  const counterLikes = document.getElementById(`${button.id}counter`);
-  let likes = counterLikes.innerHTML.split('');
-  likes[0] = Number(likes[0]) + 1;
-  counterLikes.innerHTML = likes.join('');
-}; 
-     
 const itemCounter = async () => {
   const pokemons = await pokemnData();
   const pokemonCounter = document.querySelector('.poke-counter');
-  pokemonCounter.innerHTML = `${pokemons.length} Pokemons`
-}
+  pokemonCounter.innerHTML = `${pokemons.length} Pokemons`;
+};
 
 itemCounter();
 export default pokemonShow;
