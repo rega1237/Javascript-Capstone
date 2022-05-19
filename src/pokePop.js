@@ -13,7 +13,7 @@ const getDataLink = async (id) => {
   return pokeDataLink.json();
 };
 
-const getComments = async (e) => {
+export const getComments = async (e) => {
   const commentUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/comments?item_id=item${e.target.id}`;
   const data = await fetch(commentUrl);
   return data.json();
@@ -44,7 +44,7 @@ export const counterComment = async (e) => {
   const comments = await getComments(e);
   const numberComments = comments.length;
   return numberComments;
-} 
+};
 
 export const displayPokemon = async (e) => {
   const data = await getDataLink(e.target.id);
