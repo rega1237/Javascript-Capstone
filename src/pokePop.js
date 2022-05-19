@@ -64,6 +64,7 @@ const postComment = async () => {
 
 const displayPokemon = async (e) => {
   const data = await getDataLink(e.target.id);
+  const comments = await getComments(e);
   const { name } = data;
   const nameUp = name.charAt(0).toUpperCase() + name.slice(1);
   const img = data.sprites.other.dream_world.front_default;
@@ -78,6 +79,7 @@ const displayPokemon = async (e) => {
   const attack = data.stats[1].base_stat;
   const defense = data.stats[2].base_stat;
   const speed = data.stats[5].base_stat;
+  const commentCounter = comments.length
   const sectionCard = document.querySelector('.pokemon-pop');
   sectionCard.innerHTML = null;
   sectionCard.insertAdjacentHTML('afterbegin', `
@@ -109,7 +111,7 @@ const displayPokemon = async (e) => {
             </div>
           </div>
           <div class="display-comment">
-          <h3>Comments</h3>
+          <h3>Comments (${commentCounter})</h3>
           <div class="all-comments"></div>
         </div>
         <h3 class="comment-title">Add a comment</h3>
