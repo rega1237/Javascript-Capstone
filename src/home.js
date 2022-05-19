@@ -133,11 +133,17 @@ const addlike = async (button) => {
 </svg>`;
  button.setAttribute("disabled", "");
   const counterLikes = document.getElementById(`${button.id}counter`);
-  let likes = counterLikes.innerHTML.split("");
+  let likes = counterLikes.innerHTML.split('');
   likes[0] = Number(likes[0]) + 1;
-  counterLikes.innerHTML = likes.join("");
+  counterLikes.innerHTML = likes.join('');
 }; 
      
+const itemCounter = async () => {
+  const pokemons = await pokemnData();
+  const pokemonCounter = document.querySelector('.poke-counter');
+  pokemonCounter.innerHTML = `${pokemons.length} Pokemons`
+}
 
+itemCounter();
 export default pokemonShow;
 // dXDIQAnIOHUjELoXSV9S;
