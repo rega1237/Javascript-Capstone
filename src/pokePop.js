@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 const getArray = async () => {
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=9';
+  const url = 'https://pokeapi.co/api/v2/pokemon?limit=60';
   const data = await fetch(url);
   return data.json();
 };
@@ -94,7 +94,7 @@ export const displayPokemon = async (e) => {
             </div>
           </div>
           <div class="display-comment">
-          <h3 class="comment-counter"> Counter (${commentsCounter})</h3>
+          <h3 class="comment-counter"> Comment (${commentsCounter || 0})</h3>
           <div class="all-comments"></div>
         </div>
         <h3 class="comment-title">Add a comment</h3>

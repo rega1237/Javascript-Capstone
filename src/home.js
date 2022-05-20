@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 
 const container = document.querySelector('.items-container');
-const pokemonList = 'https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0';
+const pokemonList = 'https://pokeapi.co/api/v2/pokemon/?limit=60&offset=0';
 const likeApi = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dXDIQAnIOHUjELoXSV9S/likes';
 let pokemons = [];
 
