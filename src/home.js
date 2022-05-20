@@ -11,7 +11,7 @@ const getData = async (Api) => {
   return data;
 };
 
-const pokemnData = async () => {
+export const pokemnData = async () => {
   const data = await getData(pokemonList);
   pokemons = data.results;
   for (let i = 0; i < pokemons.length; i += 1) {
@@ -145,4 +145,3 @@ const itemCounter = async () => {
 
 itemCounter();
 export default pokemonShow;
-// dXDIQAnIOHUjELoXSV9S;
