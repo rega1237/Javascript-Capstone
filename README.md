@@ -23,9 +23,24 @@
 - NPM
 - Web server
 
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+- copy this link `https://github.com/rega1237/Javascript-Capstone.git`.
+- get the directory that you want to clone the repository.
+- open the command prompt in this directory.
+- write `git clone https://github.com/rega1237/Javascript-Capstone.git`.
+- go to the repository folder in your command prompt, run `cd Javascript-Capstone`.
+- run `npm install`
+
 ## Links
 
-  this is the link to the page on internet.
+[Live Demo Link](https://rega1237.github.io/Javascript-Capstone/) 
+
+## Link explanation video:
+
+[Link](https://drive.google.com/file/d/1DbZz0cyLYZi6vFPlub8-bCMJK2GA7KgO/view?usp=sharing);
 
 ## Authors
 
@@ -37,10 +52,6 @@
 
 - GitHub: [@githubhandle](https://github.com/rega1237)
 
-
-## Loom video link
-
-
 ## Show your support
 
 Give a ⭐️ if you like this project!
@@ -48,13 +59,3 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is MIT licensed.
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-- copy this link `https://github.com/rega1237/Javascript-Capstone.git`.
-- get the directory that you want to clone the repository.
-- open the command prompt in this directory.
-- write `git clone https://github.com/rega1237/Javascript-Capstone.git`.
-- go to the repository folder in your command prompt, run `cd Javascript-Capstone`.
-- run `npm install`
