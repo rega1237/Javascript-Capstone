@@ -132,7 +132,7 @@ const pokemonShow = async () => {
 } likes</p>
         <a href="#" class="comment" id="${
   pokemons[i].id
-}">Comment</a></article>`;
+}">Comments</a></article>`;
   }
   likeIcon();
 };
